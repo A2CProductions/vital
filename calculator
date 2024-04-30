@@ -1,37 +1,55 @@
-# Flour Protein Calculator
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flour Protein Calculator</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  label, input { display: block; margin-top: 10px; }
+  input, button { padding: 10px; }
+</style>
+</head>
+<body>
+<h1>Flour Protein Calculator</h1>
+<label for="finalWeight">Enter final weight of the flour (g):</label>
+<input type="number" id="finalWeight" required>
 
-## Overview
-The Flour Protein Calculator is a simple web application designed to help bakers adjust the protein content of their flour by calculating the necessary amount of vital wheat gluten to add. This tool is particularly useful for achieving precise baking results.
+<label for="targetProtein">Enter desired protein content (%):</label>
+<input type="number" id="targetProtein" step="0.1" required>
 
-## Features
-- **User Input**: Allows users to input the final desired weight of the flour, the target protein content, and the current protein content of the flour.
-- **Calculation Output**: Computes the required amount of vital wheat gluten needed to achieve the desired protein content in the flour.
+<label for="currentProtein">Enter current protein content (%):</label>
+<input type="number" id="currentProtein" step="0.1" required>
 
-## Technology
-This application is built using HTML, CSS, and JavaScript. It runs entirely in the browser and does not require any backend services.
+<label for="currentAmount">Enter current amount of flour (g):</label>
+<input type="number" id="currentAmount" required>
 
-## Getting Started
-To use the Flour Protein Calculator, follow these steps:
-1. Clone the repository or download the files.
-2. Open the `index.html` file in any modern web browser to start the application.
+<button onclick="calculateNeededGluten()">Calculate Needed Vital Wheat Gluten</button>
 
-## How to Use
-1. Enter the final desired weight of the flour in grams.
-2. Enter the target protein content percentage.
-3. Enter the current protein content percentage of your flour.
-4. Enter the current amount of flour in grams.
-5. Click on "Calculate" to see the amount of vital wheat gluten needed.
+<h2>Needed Vital Wheat Gluten (g):</h2>
+<div id="result" style="font-size: large;"></div>
 
-## Contributing
-Contributions to the Flour Protein Calculator are welcome! Here are a few ways you can contribute:
-- Report bugs and issues.
-- Suggest new features or improvements.
-- Improve the documentation.
+<script>
+function calculateNeededGluten() {
+  const finalWeight = document.getElementById('finalWeight').value;
+  const targetProtein = document.getElementById('targetProtein').value;
+  const currentProtein = document.getElementById('currentProtein').value;
+  const currentAmount = document.getElementById('currentAmount').value;
 
-To contribute, please fork the repository and submit a pull request.
+  // Calculate the total protein required
+  const totalProteinRequired = (finalWeight * targetProtein) / 100;
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+  // Calculate current total protein
+  const currentTotalProtein = (currentAmount * currentProtein) / 100;
 
-## Contact
-For any additional questions or comments, please contact [your-email@example.com].
+  // Gluten is 75% protein
+  const glutenProteinPercent = 75;
+
+  // Calculate needed gluten
+  const neededGluten = (totalProteinRequired - currentTotalProtein) / (glutenProteinPercent / 100);
+
+  document.getElementById('result').innerText = neededGluten.toFixed(2);
+}
+</script>
+</body>
+</html>
