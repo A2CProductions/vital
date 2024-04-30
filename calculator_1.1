@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flour Protein Calculator</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  label, input { display: block; margin-top: 10px; }
+  input, button { padding: 10px; }
+</style>
+</head>
+<body>
+<h1>Flour Protein Calculator</h1>
+<label for="finalWeight">Enter final weight of the flour (g):</label>
+<input type="number" id="finalWeight" required>
+
+<label for="targetProtein">Enter desired protein content (%):</label>
+<input type="number" id="targetProtein" step="0.1" required>
+
+<label for="currentProtein">Enter current protein content (%):</label>
+<input type="number" id="currentProtein" step="0.1" required>
+
+<label for="currentAmount">Enter current amount of flour (g):</label>
+<input type="number" id="currentAmount" required>
+
+<button onclick="calculateNeededGluten()">Calculate Needed Vital Wheat Gluten</button>
+
+<h2>Needed Vital Wheat Gluten (g):</h2>
+<div id="result" style="font-size: large;"></div>
+
+<script>
+function calculateNeededGluten() {
+  const finalWeight = document.getElementById('finalWeight').value;
+  const targetProtein = document.getElementById('targetProtein').value;
+  const currentProtein = document.getElementById('currentProtein').value;
+  const currentAmount = document.getElementById('currentAmount').value;
+
+  // Calculate the total protein required
+  const totalProteinRequired = (finalWeight * targetProtein) / 100;
+
+  // Calculate current total protein
+  const currentTotalProtein = (currentAmount * currentProtein) / 100;
+
+  // Gluten is 75% protein
+  const glutenProteinPercent = 75;
+
+  // Calculate needed gluten
+  const neededGluten = (totalProteinRequired - currentTotalProtein) / (glutenProteinPercent / 100);
+
+  document.getElementById('result').innerText = neededGluten.toFixed(2);
+}
+</script>
+</body>
+</html>
