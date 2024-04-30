@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flour Protein Calculator</title>
-    <!-- Optional: Link to external CSS file -->
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Flour Protein Calculator</h1>
@@ -14,16 +12,16 @@
     <!-- Form for input -->
     <form id="calculatorForm">
         <label for="finalWeight">Final Weight of Flour (g):</label>
-        <input type="number" id="finalWeight" name="finalWeight" required>
+        <input type="number" id="finalWeight" name="finalWeight" required><br>
 
         <label for="targetProtein">Desired Protein Content (%):</label>
-        <input type="number" id="targetProtein" name="targetProtein" step="0.1" required>
+        <input type="number" id="targetProtein" name="targetProtein" step="0.1" required><br>
 
         <label for="currentProtein">Current Protein Content (%):</label>
-        <input type="number" id="currentProtein" name="currentProtein" step="0.1" required>
+        <input type="number" id="currentProtein" name="currentProtein" step="0.1" required><br>
 
         <label for="currentAmount">Current Amount of Flour (g):</label>
-        <input type="number" id="currentAmount" name="currentAmount" required>
+        <input type="number" id="currentAmount" name="currentAmount" required><br>
 
         <button type="button" onclick="calculateGluten()">Calculate</button>
     </form>
