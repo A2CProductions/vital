@@ -6,61 +6,61 @@
     <title>Flour Protein Calculator</title>
     <style>
         body {
-            font-family: Arial, sans-serif; /* Sets the font for the page */
-            background-color: #f4f4f9; /* Light grey background */
-            padding: 20px; /* Adds spacing around the content */
-            color: #333; /* Dark grey text for better readability */
-        }
-        h1 {
-            color: #5a5a5a; /* Slightly darker grey for headings */
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         form {
-            background: white; /* White background for the form */
-            padding: 20px; /* Padding inside the form */
-            border-radius: 8px; /* Rounded corners for the form */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow around the form */
-            max-width: 400px; /* Limits form width */
-            margin: 0 auto; /* Centers the form horizontally */
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
         }
         label {
-            margin-top: 10px; /* Adds space above each label */
-            display: block; /* Makes labels take a full width */
-            font-weight: bold; /* Makes font bold */
+            font-weight: bold;
+            margin-top: 20px;
         }
-        input[type="number"] {
-            width: calc(100% - 22px); /* Full width taking padding into account */
-            padding: 10px; /* Padding inside input fields */
-            margin-top: 5px; /* Space above inputs */
-            border: 1px solid #ccc; /* Subtle border around inputs */
-            border-radius: 4px; /* Rounded corners for inputs */
+        input[type="number"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
         }
         button {
-            background-color: #4CAF50; /* Green background for the button */
-            color: white; /* White text for the button */
-            padding: 10px 20px; /* Padding inside the button */
-            border: none; /* No border */
-            border-radius: 4px; /* Rounded corners for the button */
-            cursor: pointer; /* Pointer cursor on hover */
-            margin-top: 20px; /* Space above the button */
-            width: 100%; /* Full width */
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
         }
         button:hover {
-            background-color: #45a049; /* Slightly darker green on hover */
+            background-color: #45a049;
         }
         #result {
-            margin-top: 20px; /* Space above the result area */
-            padding: 10px; /* Padding inside the result display */
-            background-color: #e8f4ea; /* Light green background for results */
-            border-radius: 4px; /* Rounded corners for result box */
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.1); /* Inner shadow for depth */
+            margin-top: 20px;
+            background-color: #e8f4ea;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>Flour Protein Calculator</h1>
-    <p>Enter the details below to calculate the necessary amount of vital wheat gluten:</p>
-    
     <form id="calculatorForm">
+        <h1>Flour Protein Calculator</h1>
         <label for="finalWeight">Final Weight of Flour (g):</label>
         <input type="number" id="finalWeight" name="finalWeight" required>
 
@@ -74,9 +74,8 @@
         <input type="number" id="currentAmount" name="currentAmount" required>
 
         <button type="button" onclick="calculateGluten()">Calculate</button>
+        <div id="result"></div>
     </form>
-
-    <div id="result"></div>
 
     <script>
         function calculateGluten() {
@@ -85,5 +84,10 @@
             var currentProtein = parseFloat(document.getElementById('currentProtein').value);
             var currentAmount = parseFloat(document.getElementById('currentAmount').value);
 
+            // Calculate the needed gluten
             var neededGluten = (finalWeight * targetProtein - currentAmount * currentProtein) / (75 - targetProtein);
-            document.getElementById('result').innerHTML = `Needed Vital Wheat Gluten: ${neededGl
+            document.getElementById('result').innerHTML = 'Needed Vital Wheat Gluten: ' + neededGluten.toFixed(2) + ' g';
+        }
+    </script>
+</body>
+</html>
