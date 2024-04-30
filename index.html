@@ -4,10 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flour Protein Calculator</title>
+    <!-- Optional: Link to external CSS file -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Flour Protein Calculator</h1>
-    <p>Welcome to the Flour Protein Calculator. Please enter your details below:</p>
-    <!-- Your form and script to interact with the calculator -->
+    <p>Enter the details below to calculate the necessary amount of vital wheat gluten to achieve your desired flour protein content.</p>
+    
+    <!-- Form for input -->
+    <form id="calculatorForm">
+        <label for="finalWeight">Final Weight of Flour (g):</label>
+        <input type="number" id="finalWeight" name="finalWeight" required>
+
+        <label for="targetProtein">Desired Protein Content (%):</label>
+        <input type="number" id="targetProtein" name="targetProtein" step="0.1" required>
+
+        <label for="currentProtein">Current Protein Content (%):</label>
+        <input type="number" id="currentProtein" name="currentProtein" step="0.1" required>
+
+        <label for="currentAmount">Current Amount of Flour (g):</label>
+        <input type="number" id="currentAmount" name="currentAmount" required>
+
+        <button type="button" onclick="calculateGluten()">Calculate</button>
+    </form>
+
+    <!-- Output Result -->
+    <div id="result"></div>
+
+    <!-- JavaScript -->
+    <script>
+        function calculateGluten() {
+            var finalWeight = parseFloat(document.getElementById('finalWeight').value);
+            var targetProtein = parseFloat(document.getElementById('targetProtein').value);
+            var currentProtein = parseFloat(document.getElementById('currentProtein').value);
+            var currentAmount = parseFloat(document.getElementById('currentAmount').value);
+
+            var neededGluten = (finalWeight * targetProtein - currentAmount * currentProtein) / (75 - targetProtein);
+            document.getElementById('result').innerHTML = `Needed Vital Wheat Gluten: ${neededGluten.toFixed(2)} g`;
+        }
+    </script>
 </body>
 </html>
