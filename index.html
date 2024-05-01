@@ -49,17 +49,24 @@
         button:hover {
             background-color: #45a049;
         }
-        #result, .note, .example {
+        #result, .note, .example, .github-link {
             margin-top: 20px;
             background-color: #e8f4ea;
             padding: 10px;
             border-radius: 4px;
             text-align: center;
         }
-        .note, .example {
+        .note, .example, .github-link {
             font-style: italic;
             background-color: transparent;
             text-align: left;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -86,6 +93,7 @@
         <button type="button" onclick="calculateGluten()">Calculate</button>
         <div id="result"></div>
         <p class="note">Note: Vital wheat gluten typically contains about 75% protein.</p>
+        <p class="github-link">Feel free to modify and contribute to this project: <a href="https://github.com/A2CProductions/vital" target="_blank">GitHub Repository</a></p>
     </form>
 
     <script>
