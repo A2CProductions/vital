@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flour Protein Calculator</title>
+    <title>Vital Flour Calculator</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -49,18 +49,28 @@
         button:hover {
             background-color: #45a049;
         }
-        #result {
+        #result, .note, .example {
             margin-top: 20px;
             background-color: #e8f4ea;
             padding: 10px;
             border-radius: 4px;
             text-align: center;
         }
+        .note, .example {
+            font-style: italic;
+            background-color: transparent;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
     <form id="calculatorForm">
-        <h1>Flour Protein Calculator</h1>
+        <h1>Vital Flour Calculator</h1>
+        <p class="example">Example: To achieve 12.7% protein with 500g of flour, enter:<br>
+        Final Weight: 500<br>
+        Target Protein: 12.7<br>
+        Current Protein: 11.7<br>
+        Current Amount: 500</p>
         <label for="finalWeight">Final Weight of Flour (g):</label>
         <input type="number" id="finalWeight" name="finalWeight" required>
 
@@ -75,6 +85,7 @@
 
         <button type="button" onclick="calculateGluten()">Calculate</button>
         <div id="result"></div>
+        <p class="note">Note: Vital wheat gluten typically contains about 75% protein.</p>
     </form>
 
     <script>
@@ -84,7 +95,6 @@
             var currentProtein = parseFloat(document.getElementById('currentProtein').value);
             var currentAmount = parseFloat(document.getElementById('currentAmount').value);
 
-            // Calculate the needed gluten
             var neededGluten = (finalWeight * targetProtein - currentAmount * currentProtein) / (75 - targetProtein);
             document.getElementById('result').innerHTML = 'Needed Vital Wheat Gluten: ' + neededGluten.toFixed(2) + ' g';
         }
