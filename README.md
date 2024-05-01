@@ -1,4 +1,4 @@
-# Flour Protein Calculator
+# Vital Protein Calculator
 
 ## Overview
 The Flour Protein Calculator is a simple web application designed to help bakers adjust the protein content of their flour by calculating the necessary amount of vital wheat gluten to add. This tool is particularly useful for achieving precise baking results.
